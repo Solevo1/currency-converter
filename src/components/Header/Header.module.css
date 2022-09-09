@@ -1,0 +1,22 @@
+.header {
+  background-color:cornflowerblue;
+  padding: 20px;
+}
+
+.heading {
+  margin: 0;
+  text-transform: uppercase;
+}
+
+.wrapper {
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.image {
+  width: 42px;
+  height: 30px;
+}

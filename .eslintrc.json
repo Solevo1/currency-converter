@@ -1,0 +1,35 @@
+{
+    "env": {
+        "browser": true,
+        "es2021": true
+    },
+    "extends": [
+        "plugin:react/recommended",
+        "standard-with-typescript"
+    ],
+    "overrides": [
+    ],
+    "parserOptions": {
+        "ecmaVersion": "latest",
+        "sourceType": "module",
+        "project": ["tsconfig.json"]
+    },
+    "plugins": [
+        "react"
+    ],
+    "rules": {
+      "@typescript-eslint/semi": "off",
+      "react/react-in-jsx-scope": "off",
+      "@typescript-eslint/no-floating-promises": "off",
+      "react/jsx-indent": [2, 2],
+      "max-len": [
+        "warn",
+        {
+          "code": 90,
+          "ignoreTemplateLiterals": true
+        }
+      ],
+      "@typescript-eslint/no-unused-vars": "warn",
+      "@typescript-eslint/strict-boolean-expressions": "off"
+    }
+}

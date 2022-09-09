@@ -1,0 +1,41 @@
+.wrapper {
+  margin-top: 30px;
+}
+
+.flexbox {
+  display: flex;
+  margin: auto;
+  align-items: center;
+  padding: 5px;
+  border: 1px solid #dadce0;
+  caret-color: #1a73e8;
+  border-radius: 6px;
+  width: fit-content;
+  background-color: #fff;
+}
+
+.flexbox:focus-within {
+  outline: #1a73e8 solid 2px;
+}
+
+
+.input {
+  overflow: hidden;
+  padding: 1px 6px 1px 12px;
+  font-size: 18px;
+  border: 0;
+  height: 40px;
+  width: 100px;
+  color: #4d5156;
+  outline: 0;
+}
+
+.select {
+  border: 0;
+  outline: 0;
+  height: 40px;
+}
+
+.swapButton {
+  margin: 10px;
+}

@@ -1,24 +1,41 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { FC, useEffect, useState } from 'react';
 
-function App() {
+import CurrencyConversion from './components/CurrencyConversion/CurrencyConversion';
+import Header from './components/Header/Header';
+
+import { initialRates } from './utils/consts';
+import { exchangeApi } from './utils/exchangeApi';
+import { CurrencyRates } from './utils/types';
+
+import styles from './App.module.css';
+
+const App: FC = () => {
+  const [currencyRates, setCurrencyRates] = useState<CurrencyRates>(initialRates);
+  const [apiErrorMessage, setApiErrorMessage] = useState<string>();
+  useEffect(() => {
+    (async () => {
+      try {
+        const currencyExchangeResponce = await exchangeApi.getCurrencyExchange();
+        setCurrencyRates(currencyExchangeResponce);
+      } catch (error) {
+        let message;
+        if (error instanceof Error) message = error.message;
+        else message = String(error);
+        setApiErrorMessage(message);
+      }
+    })();
+  }, []);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className={styles.App}>
+      {
+        apiErrorMessage
+          ? <div>App is experiensing issues: {apiErrorMessage}</div>
+          : <>
+            <Header currencyRates={currencyRates}/>
+            <CurrencyConversion currencyRates={currencyRates}/>
+          </>
+      }
     </div>
   );
 }
